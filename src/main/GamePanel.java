@@ -7,10 +7,12 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import entities.Player;
+
 
 public class GamePanel extends JPanel implements Runnable{
 
-    private static final int tile_side = 48; //each tile will be 48x48 pixels
+    public static final int tile_side = 48; //each tile will be 48x48 pixels
     
     //maximum number of tile rows and columns that can be displayed
     final static int max_tile_rows = 22; 
@@ -19,17 +21,12 @@ public class GamePanel extends JPanel implements Runnable{
     //max screen size of 1920x1056 pixels
     private static final int max_screen_width = tile_side*max_tile_columns;
     private static final int max_screen_height = tile_side*max_tile_rows;
-    
-    //setting the default x and y coordinates
-    private int character_x = 240;
-    private int character_y = 240;
-
-    private static final int character_speed = 4;
-
+   
     private static final int max_fps = 144;
 
     KeyInput key_input = new KeyInput();
     
+    Player player = new Player(this,key_input);
 
     public GamePanel(){
     
@@ -89,21 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void updateScreen(){
 
-        if(key_input.movement[0]){
-            character_y -= character_speed;
-        }
-
-        if(key_input.movement[1]){
-            character_y += character_speed;
-        }
-        
-        if(key_input.movement[2]){
-            character_x -= character_speed;
-        }
-        
-        if(key_input.movement[3]){
-            character_x += character_speed;
-        }
+        player.update();
 
     }
 
@@ -115,9 +98,7 @@ public class GamePanel extends JPanel implements Runnable{
         //subclass of Graphics class to provide better control over coordinates,geometry 
         Graphics2D g2D = (Graphics2D)g ;
 
-        g2D.setColor(Color.WHITE);
-        g2D.fillRect(character_x,character_y,tile_side,tile_side);
-        
+        player.draw(g2D);
         //dispose unused resources to make more memory efficient
         g2D.dispose();
 

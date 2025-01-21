@@ -14,12 +14,14 @@ public class Main {
         // this is true by default but just to remember that there is this option 
         window.setResizable(true);
         
-        window.setTitle("KILL MEEEEEEEEEEEEEEEEEEEEEEEE");
+        window.setTitle("KILL ME");
         window.setVisible(true);
 
         //creating a new game panel and adding it to the window
         GamePanel game_panel = new GamePanel();
         window.add(game_panel);
+
+        game_panel.startGameThread();
         //making window size same as game panel size
         window.pack();
     }

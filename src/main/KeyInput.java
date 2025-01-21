@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class KeyInput implements KeyListener{
 
     //array that handles movement in the order up, down, left, right
-    protected boolean[] movement = new boolean[4];
+    public boolean[] movement = new boolean[4];
 
     @Override
     public void keyTyped(KeyEvent e) {
