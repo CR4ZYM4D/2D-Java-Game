@@ -1,0 +1,14 @@
+package entities;
+import java.awt.image.BufferedImage;
+public class Entity {
+
+    protected int world_x, world_y,speed;
+    public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2;
+    public String direction;
+
+    //will be used to update player Sprites
+    public int spriteCounter=0;
+    public int spriteNum=1;
+    
+
+}
