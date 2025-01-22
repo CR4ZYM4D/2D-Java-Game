@@ -21,68 +21,68 @@ public class Player extends Entity {
         x=240;
         y=240;
         speed=3;
-       // getPlayerImage();
-        direction="down";
+        direction="left";
+
+        // ** VERY IMPORTANT DO NOT UNCOMMENT OR ELSE INPUT BREAKS. THIS SHOULD NOT HAPPEN BUT FOR SOME REASON DOES **
+        //getPlayerImage();
 
     }
     
     //importing the player images 
-    // public void getPlayerImage(){
+    public void getPlayerImage(){
 
-    //     try {
+        try {
             
-    //         up1=ImageIO.read(getClass().getResourceAsStream("/player/up1.png"));
-    //         up2=ImageIO.read(getClass().getResourceAsStream("/player/up2.png"));
-    //         down1=ImageIO.read(getClass().getResourceAsStream("/player/down1.png"));
-    //         down2=ImageIO.read(getClass().getResourceAsStream("/player/down2.png"));
-    //         left1=ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
-    //         left2=ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
-    //         right1=ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
-    //         right2=ImageIO.read(getClass().getResourceAsStream("/player/right2.png"));
+//            up1=ImageIO.read(getClass().getResourceAsStream("/player/up1.png"));
+//            up2=ImageIO.read(getClass().getResourceAsStream("/player/up2.png"));
+//            down1=ImageIO.read(getClass().getResourceAsStream("/player/down1.png"));
+//            down2=ImageIO.read(getClass().getResourceAsStream("/player/down2.png"));
+            left1=ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
+            left2=ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
+            right1=ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
+            right2=ImageIO.read(getClass().getResourceAsStream("/player/right2.png"));
 
-    //     } 
-    //     catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
-    // }
+    }
 
     public void update(){
         
-
-        if(ki.movement[0]||ki.movement[1]||ki.movement[2]||ki.movement[3]){
             if(ki.movement[0]){
                 direction="up";
                 y -= speed;
             }
 
-            if(ki.movement[1]){
+            else if(ki.movement[1]){
                 direction="down";
                 y += speed;
             }
         
-            if(ki.movement[2]){
+            else if(ki.movement[2]){
                 direction="left";
                 x -= speed;
             }
         
-            if(ki.movement[3]){
+            else if(ki.movement[3]){
                 direction="right";
                 x += speed;
             }
 
         //updating the sprites to make some sort of animation
             spriteCounter++;
-            if(spriteCounter==40){
+            if(spriteCounter==50){
                 spriteCounter=0;
                 spriteNum= (spriteNum+1)%2;
             }
-        }
+        
 
     }
 
     public void draw(Graphics2D g2D){
-
+        getPlayerImage();
         // g2D.setColor(Color.WHITE);
         // g2D.fillRect(x,y,GamePanel.tile_side,GamePanel.tile_side);
 
@@ -117,15 +117,15 @@ public class Player extends Entity {
             break;
 
         }
-        if(spriteNum==1){
-            g2D.setColor(Color.WHITE);
-            g2D.fillRect(x,y,GamePanel.tile_side,GamePanel.tile_side);
-        }
-        else{
-            g2D.setColor(Color.RED);
-            g2D.fillRect(x,y,GamePanel.tile_side,GamePanel.tile_side);
-        }
-        //g2D.drawImage(image , x ,y ,null);//null is the ImageObserver //if we want to draw to different size we can specify that as well
+        // if(spriteNum==1){
+        //     g2D.setColor(Color.WHITE);
+        //     g2D.fillRect(x,y,GamePanel.tile_side,GamePanel.tile_side);
+        // }
+        // else{
+        //     g2D.setColor(Color.RED);
+        //     g2D.fillRect(x,y,GamePanel.tile_side,GamePanel.tile_side);
+        // }
+        g2D.drawImage(image , x ,y ,null);//null is the ImageObserver //if we want to draw to different size we can specify that as well
 
 
 

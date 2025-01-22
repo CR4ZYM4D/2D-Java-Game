@@ -21,6 +21,7 @@ public class Main {
         GamePanel game_panel = new GamePanel();
         window.add(game_panel);
 
+        // ** VERY IMPORTANT LINE DO NOT PLAY AROUND WITH IT. DON'T TOUCH!! **
         game_panel.startGameThread();
         //making window size same as game panel size
         window.pack();
