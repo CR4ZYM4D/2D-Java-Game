@@ -80,7 +80,7 @@ public class Player extends Entity {
 
         //updating the sprites to make some sort of animation
             spriteCounter++;
-            if(spriteCounter==50){
+            if(spriteCounter==60){
                 spriteCounter=0;
                 spriteNum= (spriteNum+1)%2;
             }
