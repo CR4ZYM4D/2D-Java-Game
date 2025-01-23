@@ -8,25 +8,34 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import entities.Player;
+import tiles.TileManager;
 
 
 public class GamePanel extends JPanel implements Runnable{
 
+    // **SCREEN SETTINGS**
+
     public static final int tile_side = 48; //each tile will be 48x48 pixels
     
     //maximum number of tile rows and columns that can be displayed
-    final static int max_tile_rows = 22; 
-    final static int max_tile_columns = 40;
+    public final static int max_tile_rows = 18; 
+    public final static int max_tile_columns = 32;
 
     //max screen size of 1920x1056 pixels
     private static final int max_screen_width = tile_side*max_tile_columns;
     private static final int max_screen_height = tile_side*max_tile_rows;
    
-    private static final int max_fps = 144;
+    private static final int max_fps = 120;
+
+    // **WORLD SETTINGS**
+    public static final int max_world_rows=22;
+    public static final int max_world_columns=40;
+
+    TileManager tm ;
 
     KeyInput key_input = new KeyInput();
-    
-    Player player = new Player(this,key_input);
+
+    public Player player = new Player(this,key_input);
 
     public GamePanel(){
     
@@ -43,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         //adding the key listener
         this.addKeyListener(key_input);
+
     }
 
     //creating a thread to make the loop of the game
@@ -92,13 +102,16 @@ public class GamePanel extends JPanel implements Runnable{
 
     //one of in built methods of JPanel to draw components
     public void paintComponent(Graphics g){
-
+        tm = new TileManager(this);
         super.paintComponent(g);
         
         //subclass of Graphics class to provide better control over coordinates,geometry 
         Graphics2D g2D = (Graphics2D)g ;
 
+        tm.draw(g2D);
         player.draw(g2D);
+
+        
         //dispose unused resources to make more memory efficient
         g2D.dispose();
 

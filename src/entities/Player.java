@@ -1,6 +1,5 @@
 package entities;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -14,13 +13,20 @@ public class Player extends Entity {
     GamePanel gp;
     KeyInput ki;
 
-   public Player(GamePanel gp ,KeyInput ki){
+    //setting the coordinates of the player
+    public final int player_x , player_y; 
+
+    public Player(GamePanel gp ,KeyInput ki){
         
         this.gp=gp;
         this.ki=ki;
-        x=240;
-        y=240;
-        speed=3;
+
+        player_x = GamePanel.max_tile_columns/2*GamePanel.tile_side - GamePanel.tile_side/2;
+        player_y = GamePanel.max_tile_rows/2*GamePanel.tile_side - GamePanel.tile_side/2;
+
+        world_x=GamePanel.max_tile_columns/2*GamePanel.tile_side;
+        world_y=GamePanel.max_tile_rows/2*GamePanel.tile_side;
+        speed=2;
         direction="left";
 
         // ** VERY IMPORTANT DO NOT UNCOMMENT OR ELSE INPUT BREAKS. THIS SHOULD NOT HAPPEN BUT FOR SOME REASON DOES **
@@ -53,23 +59,24 @@ public class Player extends Entity {
         
             if(ki.movement[0]){
                 direction="up";
-                y -= speed;
+                world_y -= speed;
             }
 
             else if(ki.movement[1]){
                 direction="down";
-                y += speed;
+                world_y += speed;
             }
         
             else if(ki.movement[2]){
                 direction="left";
-                x -= speed;
+                world_x -= speed;
             }
         
             else if(ki.movement[3]){
                 direction="right";
-                x += speed;
+                world_x += speed;
             }
+            
 
         //updating the sprites to make some sort of animation
             spriteCounter++;
@@ -125,7 +132,7 @@ public class Player extends Entity {
         //     g2D.setColor(Color.RED);
         //     g2D.fillRect(x,y,GamePanel.tile_side,GamePanel.tile_side);
         // }
-        g2D.drawImage(image , x ,y ,null);//null is the ImageObserver //if we want to draw to different size we can specify that as well
+        g2D.drawImage(image , player_x ,player_y ,null);//null is the ImageObserver //if we want to draw to different size we can specify that as well
 
 
 

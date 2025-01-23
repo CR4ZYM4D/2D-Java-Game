@@ -7,7 +7,7 @@ public class KeyInput implements KeyListener{
 
     //array that handles movement in the order up, down, left, right
     public boolean[] movement = new boolean[4];
-
+    public boolean boost[]=new boolean[2];
     @Override
     public void keyTyped(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_W || e.getKeyCode()==KeyEvent.VK_UP){
@@ -45,6 +45,10 @@ public class KeyInput implements KeyListener{
         if(e.getKeyCode()==KeyEvent.VK_D || e.getKeyCode()==KeyEvent.VK_RIGHT){
             movement[3] =true;
         }
+        if(e.getKeyCode()==KeyEvent.VK_SHIFT){
+            boost[1]=true;
+            boost[0]=true;
+        }
 
     }
 
@@ -65,6 +69,11 @@ public class KeyInput implements KeyListener{
         
         if(e.getKeyCode()==KeyEvent.VK_D || e.getKeyCode()==KeyEvent.VK_RIGHT){
             movement[3] =false;
+        }
+        if(e.getKeyCode()==KeyEvent.VK_SHIFT)
+        {    
+            boost[0]=true;
+            boost[1]=false;
         }
     }
 
