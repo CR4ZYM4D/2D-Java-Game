@@ -4,7 +4,7 @@ public class Entity {
 
     public int world_x, world_y,speed;
     public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2;
-    public String direction;
+    public String direction , img_path;
 
     //will be used to update player Sprites
     public int spriteCounter=0;
