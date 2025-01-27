@@ -60,13 +60,13 @@ public class TileManager {
         try {
             
             tiles[0]=new Tile();
-            tiles[0].tile_image=ImageIO.read(getClass().getResourceAsStream("/tiles/Water.png"));
+            tiles[0].tile_image=ImageIO.read(getClass().getResourceAsStream("/tiles/Grass3.png"));
 
             tiles[1]=new Tile();
             tiles[1].tile_image=ImageIO.read(getClass().getResourceAsStream("/tiles/Grass.png"));
 
             tiles[2]=new Tile();
-            tiles[2].tile_image=ImageIO.read(getClass().getResourceAsStream("/tiles/EntranceWall.png"));
+            tiles[2].tile_image=ImageIO.read(getClass().getResourceAsStream("/tiles/Grass2.png"));
 
 
         } 

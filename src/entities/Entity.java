@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 public class Entity {
 
     public int world_x, world_y,speed;
-    public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2;
+    BufferedImage image;
     public String direction , img_path;
 
     //will be used to update player Sprites

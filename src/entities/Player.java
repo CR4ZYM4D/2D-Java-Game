@@ -1,7 +1,7 @@
 package entities;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -75,7 +75,7 @@ public class Player extends Entity {
     public void draw(Graphics2D g2D){
         
         //rendering the player
-        BufferedImage image= null;
+        image= null;
 
         img_path = "/player/" + direction + Integer.toString(spriteNum+1) + ".png";
         
